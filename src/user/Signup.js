@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signup } from "../auth";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const Signup = () => {
   const [values, setValues] = useState({
