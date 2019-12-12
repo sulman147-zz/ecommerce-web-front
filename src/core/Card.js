@@ -8,22 +8,20 @@ const Card = ({
   product,
   showViewProductButton = true,
   showAddToCartButton = true,
+  showRemoveProductButton = false,
   cartUpdate = false,
   showFullDescription = false,
   showLessDescription = true,
-  showRemoveProductButton = false,
-  setRun = f => f,
+  setRun = f => f, // default value of function
   run = undefined
-  // changeCartSize
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(product.count);
-
   const showViewButton = showViewProductButton => {
     return (
       showViewProductButton && (
         <Link to={`/product/${product._id}`} className="mr-2">
-          <button className="btn btn-outline-primary mt-2 mb-2 card-btn-1">
+          <button className="btn btn-outline-primary mt-2 mb-2 ">
             View Product
           </button>
         </Link>
@@ -53,6 +51,7 @@ const Card = ({
       )
     );
   };
+
   const addToCart = () => {
     // console.log('added');
     addItem(product, setRedirect(true));
@@ -76,7 +75,6 @@ const Card = ({
       )
     );
   };
-
   const showStock = quantity => {
     return quantity > 0 ? (
       <span
@@ -92,7 +90,7 @@ const Card = ({
       </span>
     ) : (
       <span
-        className="badge badge-primary badge-pill"
+        className="badge badge-danger badge-pill"
         style={{
           paddingLeft: "10px",
           paddingRight: "10px",
@@ -147,37 +145,35 @@ const Card = ({
       )
     );
   };
+
   return (
-    <div className="card " style={{ height: "100%" }}>
-      <div className="card-header card-header-1 " style={{ fontSize: 20 }}>
+    <div className="card" style={{ height: "100%" }}>
+      <div className="card-header name" style={{ fontSize: 20 }}>
         {product.name}
       </div>
       <div className="card-body">
         {shouldRedirect(redirect)}
         <ShowImage item={product} url="product" />
         {showDescription(showFullDescription)}
-        <p className="card-p  mt-2">{product.description.substring(0, 100)} </p>
-        <p className="card-p black-10">$ {product.price}</p>
+
+        <p className="black-10">Price : ${product.price}</p>
         <p className="black-9">
-          Category: {product.category && product.category.name}
+          Category : {product.category && product.category.name}
         </p>
         <p className="black-8">
-          Added on {moment(product.createdAt).fromNow()}
+          Added on : {moment(product.createdAt).fromNow()}
         </p>
+
         {LessDescription(showLessDescription)}
+
         {showStock(product.quantity)}
         <br />
-
         {showViewButton(showViewProductButton)}
-
         {showAddToCartBtn(showAddToCartButton)}
-
         {showRemoveButton(showRemoveProductButton)}
-
         {showCartUpdateOptions(cartUpdate)}
       </div>
     </div>
   );
 };
-
 export default Card;

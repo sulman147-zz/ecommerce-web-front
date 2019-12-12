@@ -45,8 +45,8 @@ const Product = props => {
             <Card
               product={product}
               showViewProductButton={false}
-              showLessDescription={false}
               showFullDescription={true}
+              showLessDescription={false}
             />
           )}
         </div>
