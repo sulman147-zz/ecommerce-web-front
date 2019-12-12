@@ -28,6 +28,29 @@ const Card = ({
       )
     );
   };
+  const showDescription = showFullDescription => {
+    return (
+      showFullDescription && (
+        <p className="lead mt-2">
+          <span style={{ fontWeight: "bold", textDecoration: "underline" }}>
+            Description Of Book :
+          </span>
+          <br />
+          {product.description}
+        </p>
+      )
+    );
+  };
+  const LessDescription = showLessDescription => {
+    return (
+      showLessDescription && (
+        <p className="lead mt-2 black-10">
+          <span style={{ textDecoration: "underline" }}>Description</span> :{" "}
+          {product.description.substring(0, 70)} ...
+        </p>
+      )
+    );
+  };
   const addToCart = () => {
     // console.log('added');
     addItem(product, setRedirect(true));
@@ -54,9 +77,29 @@ const Card = ({
 
   const showStock = quantity => {
     return quantity > 0 ? (
-      <span className="badge badge-primary badge-pill">In Stock </span>
+      <span
+        className="badge badge-primary badge-pill"
+        style={{
+          paddingLeft: "10px",
+          paddingRight: "10px",
+          paddingTop: "5px",
+          paddingBottom: "5px"
+        }}
+      >
+        In Stock{" "}
+      </span>
     ) : (
-      <span className="badge badge-primary badge-pill">Out of Stock </span>
+      <span
+        className="badge badge-primary badge-pill"
+        style={{
+          paddingLeft: "10px",
+          paddingRight: "10px",
+          paddingTop: "5px",
+          paddingBottom: "5px"
+        }}
+      >
+        Out of Stock{" "}
+      </span>
     );
   };
 
@@ -110,6 +153,7 @@ const Card = ({
       <div className="card-body">
         {shouldRedirect(redirect)}
         <ShowImage item={product} url="product" />
+        {showDescription(showFullDescription)}
         <p className="card-p  mt-2">{product.description.substring(0, 100)} </p>
         <p className="card-p black-10">$ {product.price}</p>
         <p className="black-9">
@@ -118,6 +162,7 @@ const Card = ({
         <p className="black-8">
           Added on {moment(product.createdAt).fromNow()}
         </p>
+        {LessDescription(showLessDescription)}
         {showStock(product.quantity)}
         <br />
 
