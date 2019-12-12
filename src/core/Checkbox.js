@@ -3,7 +3,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-const Checkbox = ({ categories, handleFilters }) => {
+const Checkboxc = ({ categories, handleFilters }) => {
   const [checked, setCheked] = useState([]);
 
   const handleToggle = c => () => {
@@ -40,4 +40,4 @@ const Checkbox = ({ categories, handleFilters }) => {
   ));
 };
 
-export default Checkbox;
+export default Checkboxc;

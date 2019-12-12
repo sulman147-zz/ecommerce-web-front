@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import Card from "./Card";
 import { getCategories, getFilteredProducts } from "./apiCore";
-import Checkbox from "./Checkbox";
+import Checkboxc from "./Checkbox";
 import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
 
@@ -105,7 +105,7 @@ const Shop = () => {
         <div className="col-3">
           <h4>Filter by categories</h4>
           <ul>
-            <Checkbox
+            <Checkboxc
               categories={categories}
               handleFilters={filters => handleFilters(filters, "category")}
             />
