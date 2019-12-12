@@ -9,6 +9,8 @@ const Card = ({
   showViewProductButton = true,
   showAddToCartButton = true,
   cartUpdate = false,
+  showFullDescription = false,
+  showLessDescription = true,
   showRemoveProductButton = false,
   setRun = f => f,
   run = undefined
